@@ -17,8 +17,9 @@ app.post("/math", (req, res) => {
     const incomingMath = prolloMath.checkNumbers(req.body);
     // Guard-clause for non-number
     if (incomingMath === undefined) return res.status(400).send("Received non-number!");
+    if (prolloMath.checkOperator(incomingMath) === undefined) return res.status(400).send("Received invalid operator!");
 
-    // Push to array if numbers - NEED TO DO MATH FIRST
+    // Push to array after calculating total if valid data
     mathWithTotals.push(prolloMath.doMath(incomingMath));
 
     // Status Codes and Console Logs

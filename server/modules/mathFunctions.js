@@ -1,6 +1,7 @@
 module.exports = {
     checkNumbers,
-    doMath
+    doMath,
+    checkOperator
 }
 
 function checkNumbers(mathObject) {
@@ -15,7 +16,9 @@ function checkNumbers(mathObject) {
 }
 
 function checkOperator(mathObject) {
-
+    const operatorOptions = ["+", "-", "*", "/"];
+    if (!operatorOptions.some((item) => item === mathObject.operator)) return;
+    return mathObject;
 };
 
 function doMath(mathObject) {
