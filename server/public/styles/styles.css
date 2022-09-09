@@ -11,7 +11,7 @@ p {
 button {
     background-color: #342E37;
     color: #0AFFF7;
-    font-size: 3REM;
+    font-size: 2.5REM;
     border: none;
 }
 
@@ -33,8 +33,8 @@ button:hover {
 
 .calcDisplay {
     width: 32.5vw;
-    height: 5REM;
-    font-size: 5REM;
+    height: 3REM;
+    font-size: 3REM;
     text-align: end;
     background-color: #342E37;
     color: #0AFFF7;
@@ -45,7 +45,7 @@ button:hover {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 5px;
-    grid-auto-rows: minmax(5REM, auto);
+    grid-auto-rows: minmax(3REM, auto);
 }
 
 .twoGrids {
