@@ -19,7 +19,7 @@ app.post("/math", (req, res) => {
     if (incomingMath === undefined) return res.status(400).send("Received non-number!");
 
     // Push to array if numbers - NEED TO DO MATH FIRST
-    mathWithTotals.push(prolloMath.checkNumbers(incomingMath));
+    mathWithTotals.push(prolloMath.doMath(incomingMath));
 
     // Status Codes and Console Logs
     res.status(201).send("Received math data!");
