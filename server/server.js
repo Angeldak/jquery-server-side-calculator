@@ -14,6 +14,7 @@ app.get("/math", (req, res) => {
 });
 
 app.post("/math", (req, res) => {
+    console.log(req.body);
     const incomingMath = prolloMath
         .checkNumbers(prolloMath
             .findOps(req.body));

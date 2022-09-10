@@ -28,7 +28,7 @@ function checkOperator(keyStroke, currentArray) {
 }
 
 function collectData() {
-    const tempObj = { data: $("#displayCalc").val() };
+    const tempObj = { mathInfo: `${$("#displayCalc").val()}` };
     return tempObj;
 }
 
@@ -59,6 +59,13 @@ function displayUpdate(event) {
             currentDisplay = `${findOperandsOperator(currentDisplay)[0]}${findOperandsOperator(currentDisplay)[2]}`;
         }
         if (keyValue === "AC") {
+            currentDisplay = "";
+        }
+        if (keyValue === "=") {
+            if (findOperandsOperator(currentDisplay).includes("")) return;
+            $.ajax(postRequest("math", collectData()))
+                .then(appendData)
+                .catch(checkError);
             currentDisplay = "";
         }
     }
@@ -96,11 +103,11 @@ function getRequest(path) {
     return tempObj;
 }
 
-function postRequest(path, data) {
+function postRequest(path, obj) {
     const tempObj = {
-        method: "GET",
+        method: "POST",
         url: `/${path}`,
-        data: `${data}`
+        data: obj
     }
     return tempObj;
 }

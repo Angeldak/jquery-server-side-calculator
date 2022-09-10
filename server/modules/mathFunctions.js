@@ -50,7 +50,7 @@ function doMath(mathObject) {
 };
 
 function findOps(array) {
-    let tempArray = array.data.split("");
+    let tempArray = array.mathInfo.split("");
     let operatorToggle = false;
     let currentOperator = "";
     let firstOperand = "";
