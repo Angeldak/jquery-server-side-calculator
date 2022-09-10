@@ -1,9 +1,13 @@
+/// <reference path="jquery.js" />
 $(onReady);
 const allowedOperators = ["+", "-", "*", "/"];
 let currentDisplay = "";
+let calcPower = false;
 
 function onReady() {
     clickHandler();
+    appendData();
+    disableToggle(true);
 }
 
 function clickHandler() {
@@ -11,7 +15,22 @@ function clickHandler() {
 }
 
 function appendData() {
-
+    $.ajax(getRequest("math"))
+        .then((req, res) => {
+            $("#calcHistory").empty();
+            for (const item of req) {
+                $("#calcHistory").append(`
+                    <tr>
+                        <td>${item.firstOperand}</td>
+                        <td>${item.operator}</td>
+                        <td>${item.secondOperand}</td>
+                        <td>=</td>
+                        <td>${item.total}</td>
+                    </tr>
+                `)
+            }
+        })
+        .catch(checkError)
 }
 
 function checkError(error) {
@@ -37,6 +56,20 @@ function displayUpdate(event) {
     const keyType = tar.data("key-type");
     const keyValue = tar.data("key-value");
 
+    if (keyType === "power") {
+        if (calcPower === false) {
+            $("#calcBody").toggleClass("addHover");
+            $("#displayCalc").attr("placeholder", "0");
+            disableToggle(false);
+            calcPower = true;
+        } else {
+            $("#calcBody").toggleClass("addHover");
+            $("#displayCalc").removeAttr('placeholder');
+            disableToggle(true);
+            calcPower = false;
+            currentDisplay = "";
+        }
+    }
     if (keyType === "number") {
         currentDisplay = currentDisplay + keyValue;
     }
@@ -56,7 +89,11 @@ function displayUpdate(event) {
     }
     if (keyType === "misc") {
         if (keyValue === "C") {
-            currentDisplay = `${findOperandsOperator(currentDisplay)[0]}${findOperandsOperator(currentDisplay)[2]}`;
+            if (findOperandsOperator(currentDisplay)[2]) {
+                currentDisplay = `${findOperandsOperator(currentDisplay)[0]}${findOperandsOperator(currentDisplay)[2]}`;
+            } else {
+                currentDisplay = "";
+            }
         }
         if (keyValue === "AC") {
             currentDisplay = "";
@@ -70,6 +107,14 @@ function displayUpdate(event) {
         }
     }
     $("#displayCalc").val(currentDisplay);
+}
+
+function disableToggle(boolean) {
+    for (const button of $("button")) {
+        if ($(button).data("key-type") !== "power") {
+            $(button).prop('disabled', boolean);
+        }
+    }
 }
 
 function findOperandsOperator(array) {

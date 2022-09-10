@@ -14,9 +14,9 @@
 <body>
     <h1>Calculator App</h1>
     <div class="container">
-        <div class="calculatorBody">
+        <div id="calcBody" class="calculatorBody">
             <div class="calcBodyDisplay">
-                <input id="displayCalc" type="text" value="" class="calcDisplay" disabled>
+                <input id="displayCalc" type="text" class="calcDisplay" disabled>
             </div>
             <div class="calcBodyKeys gridLayout">
                 <button data-key-type="power" data-key-value="onOff" id="powerBtn">Pwr</button>
@@ -44,9 +44,11 @@
     <div class="historyBox">
         <table>
             <thead>
-                <th>Previous Calculations:</th>
+                <tr>
+                    <th colspan="5">Previous Calculations</th>
+                </tr>
             </thead>
-            <tbody>
+            <tbody id="calcHistory">
 
             </tbody>
         </table>

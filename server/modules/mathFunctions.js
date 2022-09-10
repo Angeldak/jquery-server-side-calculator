@@ -30,16 +30,16 @@ function checkOperator(mathObject) {
 function doMath(mathObject) {
     switch (mathObject.operator) {
         case "+":
-            mathObject.total = mathObject.firstOperand + mathObject.secondOperand;
+            mathObject.total = (mathObject.firstOperand + mathObject.secondOperand).toFixed(2);
             break;
         case "-":
-            mathObject.total = mathObject.firstOperand - mathObject.secondOperand;
+            mathObject.total = (mathObject.firstOperand - mathObject.secondOperand).toFixed(2);
             break;
         case "*":
-            mathObject.total = mathObject.firstOperand * mathObject.secondOperand;
+            mathObject.total = (mathObject.firstOperand * mathObject.secondOperand).toFixed(2);
             break;
         case "/":
-            mathObject.total = mathObject.firstOperand / mathObject.secondOperand;
+            mathObject.total = (mathObject.firstOperand / mathObject.secondOperand).toFixed(2);
             break;
         default:
             mathObject.total = "0"

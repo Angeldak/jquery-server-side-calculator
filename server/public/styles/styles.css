@@ -15,8 +15,17 @@ button {
     border: none;
 }
 
-button:hover {
+div.calculatorBody.addHover button:hover {
     background-color: #138E90;
+}
+
+input::placeholder {
+    color: #0AFFF7;
+}
+
+td,
+th {
+    font-size: 1.25rem;
 }
 
 .container {
@@ -50,4 +59,16 @@ button:hover {
 
 .twoGrids {
     grid-column: 1/3;
+}
+
+.tableColSpan {
+    column-span: 5;
+    text-align: center;
+}
+
+.historyBox {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    width: 100%;
 }
