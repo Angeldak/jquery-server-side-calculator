@@ -28,8 +28,8 @@ function checkOperator(keyStroke, currentArray) {
 }
 
 function collectData() {
-    const tempArray = $("#displayCalc").val(currentDisplay);
-    return tempArray.split("");
+    const tempObj = { data: $("#displayCalc").val() };
+    return tempObj;
 }
 
 function displayUpdate(event) {

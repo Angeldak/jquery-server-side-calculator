@@ -14,7 +14,10 @@ app.get("/math", (req, res) => {
 });
 
 app.post("/math", (req, res) => {
-    const incomingMath = prolloMath.checkNumbers(req.body);
+    const incomingMath = prolloMath
+        .checkNumbers(prolloMath
+            .findOps(req.body));
+    console.log(incomingMath);
     // Guard-clause for non-number
     if (incomingMath === undefined) return res.status(400).send("Received non-number!");
     if (prolloMath.checkOperator(incomingMath) === undefined) return res.status(400).send("Received invalid operator!");
