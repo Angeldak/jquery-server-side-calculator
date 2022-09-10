@@ -15,65 +15,94 @@ function appendData() {
 }
 
 function checkError(error) {
-
+    console.log("Caught an error!");
+    console.log(error.reponseText);
 }
 
-function checkOperator(keyStroke) {
-
+function checkOperator(keyStroke, currentArray) {
+    for (const operator of allowedOperators) {
+        if (currentArray.includes(operator)) return currentArray;
+    }
+    currentArray = currentArray + keyStroke;
+    return currentArray;
 }
 
 function collectData() {
-
+    const tempArray = $("#displayCalc").val(currentDisplay);
+    return tempArray.split("");
 }
 
 function displayUpdate(event) {
     const tar = $(event.target);
-    if (tar.data("key-type") === "misc") return;
-    if (tar.data("key-type") === "number") {
-        currentDisplay = currentDisplay + tar.data("key-value");
-    }
-    if (tar.data("key-type") === "operator") {
-        for (const operator of allowedOperators) {
-            if (currentDisplay.includes(operator)) return;
-        }
-        currentDisplay = currentDisplay + tar.data("key-value");
-    }
-    if (tar.data("key-type") === "dot") {
-        let tempArray = currentDisplay.split("");
-        let operatorToggle = false;
-        let firstOperand = "";
-        let secondOperand = "";
-        for (const item of tempArray) {
-            if (allowedOperators.includes(item)) {
-                operatorToggle = true;
-                continue;
-            }
-            if (operatorToggle === false) {
-                firstOperand += item;
-                console.log(firstOperand);
-            } else {
-                secondOperand += item;
-                console.log(secondOperand);
-            }
-        }
-        if (operatorToggle === false) {
-            if (!firstOperand.includes("."))
-                currentDisplay = currentDisplay + tar.data("key-value");
-        } else {
-            if (!secondOperand.includes("."))
-                currentDisplay = currentDisplay + tar.data("key-value");
-        }
-    }
+    const keyType = tar.data("key-type");
+    const keyValue = tar.data("key-value");
 
+    if (keyType === "number") {
+        currentDisplay = currentDisplay + keyValue;
+    }
+    if (keyType === "operator") {
+        currentDisplay = checkOperator(keyValue, currentDisplay);
+    }
+    if (keyType === "dot") {
+        if (findOperandsOperator(currentDisplay)[2]) {
+            if (!findOperandsOperator(currentDisplay)[1].includes(".")) {
+                currentDisplay = currentDisplay + keyValue;
+            }
+        } else {
+            if (!findOperandsOperator(currentDisplay)[0].includes(".")) {
+                currentDisplay = currentDisplay + keyValue;
+            }
+        }
+    }
+    if (keyType === "misc") {
+        if (keyValue === "C") {
+            currentDisplay = `${findOperandsOperator(currentDisplay)[0]}${findOperandsOperator(currentDisplay)[2]}`;
+        }
+        if (keyValue === "AC") {
+            currentDisplay = "";
+        }
+    }
     $("#displayCalc").val(currentDisplay);
 }
 
-function getRequest(path) {
+function findOperandsOperator(array) {
+    let tempArray = array.split("");
+    let operatorToggle = false;
+    let currentOperator = "";
+    let firstOperand = "";
+    let secondOperand = "";
 
+    for (const item of tempArray) {
+        if (allowedOperators.includes(item)) {
+            if (item === ".") continue;
+            operatorToggle = true;
+            currentOperator = item;
+            continue;
+        }
+        if (operatorToggle === false) {
+            firstOperand += item;
+        } else {
+            secondOperand += item;
+        }
+    }
+    return [firstOperand, secondOperand, currentOperator];
+}
+
+function getRequest(path) {
+    const tempObj = {
+        method: "GET",
+        url: `/${path}`
+    }
+    return tempObj;
 }
 
 function postRequest(path, data) {
-
+    const tempObj = {
+        method: "GET",
+        url: `/${path}`,
+        data: `${data}`
+    }
+    return tempObj;
 }
 
 // MOVE TO SERVER
