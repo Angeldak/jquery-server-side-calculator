@@ -12,6 +12,7 @@ function onReady() {
 
 function clickHandler() {
     $("button").on("click", displayUpdate);
+    $("#calcHistory").on("click", "tr", callHistory);
 }
 
 function appendData() {
@@ -33,6 +34,11 @@ function appendData() {
             $("#displayCalc").attr("placeholder", lastTotal);
         })
         .catch(checkError)
+}
+
+function callHistory(event) {
+    let totalText = $(event.target).parent().children().last().text();
+    return $("#displayCalc").attr("placeholder", totalText);
 }
 
 function checkError(error) {
