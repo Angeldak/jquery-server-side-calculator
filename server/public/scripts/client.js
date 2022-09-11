@@ -24,11 +24,11 @@ function appendData() {
             for (const item of req) {
                 $("#calcHistory").append(`
                     <tr>
-                        <td>${item.firstOperand}</td>
+                        <td>${item.firstOperand.toLocaleString('en')}</td>
                         <td>${item.operator}</td>
-                        <td>${item.secondOperand}</td>
+                        <td>${item.secondOperand.toLocaleString('en')}</td>
                         <td>=</td>
-                        <td>${item.total}</td>
+                        <td>${item.total.toLocaleString('en')}</td>
                     </tr>
                 `)
             }
