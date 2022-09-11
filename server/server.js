@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Setup GET and POST
 app.get("/math", (req, res) => {
-    res.send(mathWithTotals);
+    res.send(prolloMath.cleanDecimals(mathWithTotals));
 });
 
 app.post("/math", (req, res) => {

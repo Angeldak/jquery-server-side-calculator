@@ -29,6 +29,8 @@ function appendData() {
                     </tr>
                 `)
             }
+            let lastTotal = $("#calcHistory").children().last().children().last().text();
+            $("#displayCalc").attr("placeholder", lastTotal);
         })
         .catch(checkError)
 }
@@ -96,10 +98,12 @@ function displayUpdate(event) {
                 currentDisplay = `${findOperandsOperator(currentDisplay)[0]}${findOperandsOperator(currentDisplay)[2]}`;
             } else {
                 currentDisplay = "";
+                $("#displayCalc").attr("placeholder", "0");
             }
         }
         if (keyValue === "AC") {
             currentDisplay = "";
+            $("#displayCalc").attr("placeholder", "0");
         }
         if (keyValue === "=") {
             if (findOperandsOperator(currentDisplay).includes("")) return;
@@ -168,6 +172,4 @@ function deleteRequest(path) {
     return tempObj;
 }
 
-//ADD CLEAR HISTORY BUTTON with DELETE to Server
 //ADD CLICK HISTORY TO PULL BACK IN
-//DISPLAY TOTAL IN PLACEHOLDER ON CALCULATE

@@ -4,7 +4,8 @@ module.exports = {
     checkNumbers,
     doMath,
     checkOperator,
-    findOps
+    findOps,
+    cleanDecimals
 }
 
 function checkNumbers(array) {
@@ -30,16 +31,16 @@ function checkOperator(mathObject) {
 function doMath(mathObject) {
     switch (mathObject.operator) {
         case "+":
-            mathObject.total = (mathObject.firstOperand + mathObject.secondOperand).toFixed(2);
+            mathObject.total = mathObject.firstOperand + mathObject.secondOperand;
             break;
         case "-":
-            mathObject.total = (mathObject.firstOperand - mathObject.secondOperand).toFixed(2);
+            mathObject.total = mathObject.firstOperand - mathObject.secondOperand;
             break;
         case "*":
-            mathObject.total = (mathObject.firstOperand * mathObject.secondOperand).toFixed(2);
+            mathObject.total = mathObject.firstOperand * mathObject.secondOperand;
             break;
         case "/":
-            mathObject.total = (mathObject.firstOperand / mathObject.secondOperand).toFixed(2);
+            mathObject.total = mathObject.firstOperand / mathObject.secondOperand;
             break;
         default:
             mathObject.total = "0"
@@ -70,4 +71,15 @@ function findOps(array) {
         }
     }
     return [firstOperand, secondOperand, currentOperator];
+}
+
+function cleanDecimals(mathArray) {
+    for (let i = 0; i < mathArray.length; i++) {
+        const mathObj = mathArray[i];
+        if (mathObj.total.toString().includes("."))
+            if (mathObj.total.toString().split(".")[1].length > 2) {
+                mathObj.total = mathObj.total.toFixed(2);
+            }
+    }
+    return mathArray;
 }
