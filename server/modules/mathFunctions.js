@@ -22,12 +22,14 @@ function checkNumbers(array) {
     return mathObject;
 }
 
+// Begin function to check if operator is an allowed operator
 function checkOperator(mathObject) {
     const operatorOptions = ["+", "-", "*", "/"];
     if (!operatorOptions.some((item) => item === mathObject.operator)) return;
     return mathObject;
 };
 
+// Begin function to calculate math
 function doMath(mathObject) {
     switch (mathObject.operator) {
         case "+":
@@ -50,6 +52,7 @@ function doMath(mathObject) {
     return mathObject;
 };
 
+// Begin function to find operands and operator
 function findOps(array) {
     let tempArray = array.mathInfo.split("");
     let operatorToggle = false;
@@ -73,6 +76,8 @@ function findOps(array) {
     return [firstOperand, secondOperand, currentOperator];
 }
 
+// Begin function to check and clean decimal to to spots
+// if there is a decimal over 2
 function cleanDecimals(mathArray) {
     for (let i = 0; i < mathArray.length; i++) {
         const mathObj = mathArray[i];

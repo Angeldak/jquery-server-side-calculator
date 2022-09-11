@@ -8,13 +8,15 @@ function onReady() {
     clickHandler();
     appendData();
     disableToggle(true);
-}
+}  // end onReady
 
+// Set up click handlers
 function clickHandler() {
     $("button").on("click", displayUpdate);
     $("#calcHistory").on("click", "tr", callHistory);
-}
+}  // end clickHandler
 
+// Begin function to append calculation history
 function appendData() {
     $.ajax(getRequest("math"))
         .then((req, res) => {
@@ -34,31 +36,36 @@ function appendData() {
             $("#displayCalc").attr("placeholder", lastTotal);
         })
         .catch(checkError)
-}
+}  // end appendData
 
+// Begin function to re-display prior calculation
 function callHistory(event) {
     let totalText = $(event.target).parent().children().last().text();
     return $("#displayCalc").attr("placeholder", totalText);
-}
+}  // end callHistory
 
+// Begin function to handle errors
 function checkError(error) {
     console.log("Caught an error!");
     console.log(error.reponseText);
-}
+}  // end checkError
 
+// Begin function to check if an operator has already been used
 function checkOperator(keyStroke, currentArray) {
     for (const operator of allowedOperators) {
         if (currentArray.includes(operator)) return currentArray;
     }
     currentArray = currentArray + keyStroke;
     return currentArray;
-}
+}  // end checkOperator
 
+// Begin function to collect data for POST request
 function collectData() {
     const tempObj = { mathInfo: `${$("#displayCalc").val()}` };
     return tempObj;
-}
+}  // end collectData
 
+// Begin function to handle key presses
 function displayUpdate(event) {
     const tar = $(event.target);
     const keyType = tar.data("key-type");
@@ -120,16 +127,19 @@ function displayUpdate(event) {
         }
     }
     $("#displayCalc").val(currentDisplay);
-}
+}  // displayUpdate
 
+
+// Begin function to disable and re-enable buttons
 function disableToggle(boolean) {
     for (const button of $("button")) {
         if ($(button).data("key-type") !== "power") {
             $(button).prop('disabled', boolean);
         }
     }
-}
+}  // end disableToggle
 
+// Begin function to split string into operands and operator
 function findOperandsOperator(array) {
     let tempArray = array.split("");
     let operatorToggle = false;
@@ -151,16 +161,19 @@ function findOperandsOperator(array) {
         }
     }
     return [firstOperand, secondOperand, currentOperator];
-}
+}  // end findOperandsOperator
 
+// Begin section of server requests
+// Begin function for GET Request
 function getRequest(path) {
     const tempObj = {
         method: "GET",
         url: `/${path}`
     }
     return tempObj;
-}
+}  // end getRequest
 
+// Begin function for POST request
 function postRequest(path, obj) {
     const tempObj = {
         method: "POST",
@@ -168,14 +181,13 @@ function postRequest(path, obj) {
         data: obj
     }
     return tempObj;
-}
+}  // end postRequest
 
+// Begin function for DELETE request
 function deleteRequest(path) {
     const tempObj = {
         method: "DELETE",
         url: `/${path}`
     }
     return tempObj;
-}
-
-//ADD CLICK HISTORY TO PULL BACK IN
+}  // end deleteRequest

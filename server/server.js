@@ -31,6 +31,7 @@ app.post("/math", (req, res) => {
     console.log("Math data received:", req.body);
 });
 
+// Setup DELETE to clear array
 app.delete("/math", (req, res) => {
     mathWithTotals.length = 0;
     res.status(200).send("Delete request received!");
