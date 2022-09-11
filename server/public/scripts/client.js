@@ -68,6 +68,9 @@ function displayUpdate(event) {
             disableToggle(true);
             calcPower = false;
             currentDisplay = "";
+            $.ajax(deleteRequest("math"))
+                .then(appendData)
+                .catch(checkError);
         }
     }
     if (keyType === "number") {
@@ -156,3 +159,15 @@ function postRequest(path, obj) {
     }
     return tempObj;
 }
+
+function deleteRequest(path) {
+    const tempObj = {
+        method: "DELETE",
+        url: `/${path}`
+    }
+    return tempObj;
+}
+
+//ADD CLEAR HISTORY BUTTON with DELETE to Server
+//ADD CLICK HISTORY TO PULL BACK IN
+//DISPLAY TOTAL IN PLACEHOLDER ON CALCULATE

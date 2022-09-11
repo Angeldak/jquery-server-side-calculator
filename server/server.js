@@ -31,6 +31,11 @@ app.post("/math", (req, res) => {
     console.log("Math data received:", req.body);
 });
 
+app.delete("/math", (req, res) => {
+    mathWithTotals.length = 0;
+    res.status(200).send("Delete request received!");
+});
+
 // Setup Listen
 app.listen(PORT, () => {
     console.log("Listening on Port: 5000");
