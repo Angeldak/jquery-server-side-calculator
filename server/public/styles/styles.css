@@ -1,74 +1,74 @@
 html {
-    background-color: #342E37;
-    color: #0AFFF7;
-    text-align: center;
+  background-color: #342e37;
+  color: #0afff7;
+  text-align: center;
 }
 
 p {
-    margin: 5px 0 0 0;
+  margin: 5px 0 0 0;
 }
 
 button {
-    background-color: #342E37;
-    color: #0AFFF7;
-    font-size: 2.75REM;
-    border: none;
+  background-color: #342e37;
+  color: #0afff7;
+  font-size: 2.75rem;
+  border: none;
 }
 
 div.calculatorBody.addHover button:hover {
-    background-color: #138E90;
+  background-color: #138e90;
 }
 
 input::placeholder {
-    color: #0AFFF7;
+  color: #0afff7;
 }
 
 td,
 th {
-    font-size: 1.25rem;
+  font-size: 1.25rem;
 }
 
 .container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .calculatorBody {
-    width: 33vw;
-    border: 5px solid #0AFFF7;
-    background-color: #0AFFF7;
+  width: 33vw;
+  border: 5px solid #0afff7;
+  background-color: #0afff7;
 }
 
 .calcDisplay {
-    width: 32.5vw;
-    height: 3REM;
-    font-size: 3REM;
-    text-align: end;
-    background-color: #342E37;
-    color: #0AFFF7;
-    margin-bottom: 5px;
+  width: 32.5vw;
+  height: 3rem;
+  font-size: 3rem;
+  text-align: end;
+  background-color: #342e37;
+  color: #0afff7;
+  margin-bottom: 5px;
 }
 
 .gridLayout {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
-    grid-auto-rows: minmax(3REM, auto);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  grid-auto-rows: minmax(3rem, auto);
 }
 
 .twoGrids {
-    grid-column: 1/3;
+  grid-column: 1/3;
 }
 
 .tableColSpan {
-    column-span: 5;
-    text-align: center;
+  column-span: 5;
+  text-align: center;
 }
 
 .historyBox {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  width: 100%;
 }
