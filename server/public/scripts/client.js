@@ -80,11 +80,13 @@ function displayUpdate(event) {
     if (calcPower === false) {
       $("#calcBody").toggleClass("addHover");
       $("#displayCalc").attr("placeholder", "0");
+      $("#pwrBtn").text("Off");
       disableToggle(false);
       calcPower = true;
     } else {
       $("#calcBody").toggleClass("addHover");
       $("#displayCalc").removeAttr("placeholder");
+      $("#pwrBtn").text("On");
       disableToggle(true);
       calcPower = false;
       currentDisplay = "";
