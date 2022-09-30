@@ -85,7 +85,7 @@ th {
 
 @media all and (max-width: 768px) {
   .calculatorBody {
-    width: 60%;
+    width: 60% !important;
   }
 
   .calcDisplay {
@@ -95,7 +95,7 @@ th {
 
 @media all and (max-width: 600px) {
   .calculatorBody {
-    width: 80%;
+    width: 80% !important;
   }
 
   .calcDisplay {
@@ -109,7 +109,7 @@ th {
   }
 
   .calculatorBody {
-    width: 95%;
+    width: 95% !important;
   }
 
   .calcDisplay {
