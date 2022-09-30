@@ -72,3 +72,48 @@ th {
   margin-top: 10px;
   width: 100%;
 }
+
+@media only screen and (max-width: 900px) {
+  .calculatorBody {
+    width: 50vw;
+  }
+
+  .calcDisplay {
+    width: 49vw;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .calculatorBody {
+    width: 60vw;
+  }
+
+  .calcDisplay {
+    width: 59vw;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .calculatorBody {
+    width: 80vw;
+  }
+
+  .calcDisplay {
+    width: 79vw;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  button {
+    font-size: 2rem;
+  }
+
+  .calculatorBody {
+    width: 95vw;
+  }
+
+  .calcDisplay {
+    width: 89vw;
+    font-size: 2rem;
+  }
+}

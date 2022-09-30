@@ -40,7 +40,9 @@ function appendData() {
         .text();
       $("#displayCalc").attr("placeholder", lastTotal);
     })
-    .catch(checkError);
+    .catch((error) => {
+      console.log("error caught in append :>> ", error);
+    });
 } // end appendData
 
 // Begin function to re-display prior calculation
@@ -90,7 +92,11 @@ function displayUpdate(event) {
       disableToggle(true);
       calcPower = false;
       currentDisplay = "";
-      $.ajax(deleteRequest("math")).then(appendData).catch(checkError);
+      $.ajax(deleteRequest("math"))
+        .then(appendData)
+        .catch((error) => {
+          console.log("error caught in displayUpdate :>> ", error);
+        });
     }
   }
   if (keyType === "number") {
