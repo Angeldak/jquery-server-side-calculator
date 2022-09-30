@@ -35,13 +35,13 @@ th {
 }
 
 .calculatorBody {
-  width: 33vw;
+  width: 33%;
   border: 5px solid #0afff7;
   background-color: #0afff7;
 }
 
 .calcDisplay {
-  width: 32.5vw;
+  width: 98%;
   height: 3rem;
   font-size: 3rem;
   text-align: end;
@@ -75,31 +75,31 @@ th {
 
 @media all and (max-width: 900px) {
   .calculatorBody {
-    width: 50vw;
+    width: 50%;
   }
 
   .calcDisplay {
-    width: 49vw;
+    width: 98%;
   }
 }
 
 @media all and (max-width: 768px) {
   .calculatorBody {
-    width: 60vw;
+    width: 60%;
   }
 
   .calcDisplay {
-    width: 59vw;
+    width: 98%;
   }
 }
 
 @media all and (max-width: 600px) {
   .calculatorBody {
-    width: 80vw;
+    width: 80%;
   }
 
   .calcDisplay {
-    width: 79vw;
+    width: 98%;
   }
 }
 
@@ -109,11 +109,11 @@ th {
   }
 
   .calculatorBody {
-    width: 95vw;
+    width: 95%;
   }
 
   .calcDisplay {
-    width: 89vw;
+    width: 98%;
     font-size: 2rem;
   }
 }
