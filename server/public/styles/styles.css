@@ -73,7 +73,7 @@ th {
   width: 100%;
 }
 
-@media screen and (max-device-width: 900px) {
+@media only screen and (max-device-width: 900px) {
   .calculatorBody {
     width: 50vw;
   }
@@ -83,7 +83,7 @@ th {
   }
 }
 
-@media screen and (max-device-width: 768px) {
+@media only screen and (max-device-width: 768px) {
   .calculatorBody {
     width: 60vw;
   }
@@ -93,7 +93,7 @@ th {
   }
 }
 
-@media screen and (max-device-width: 600px) {
+@media only screen and (max-device-width: 600px) {
   .calculatorBody {
     width: 80vw;
   }
@@ -103,7 +103,7 @@ th {
   }
 }
 
-@media screen and (max-device-width: 360px) {
+@media only screen and (max-device-width: 360px) {
   button {
     font-size: 2rem;
   }
